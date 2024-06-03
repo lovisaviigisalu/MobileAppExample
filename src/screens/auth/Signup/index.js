@@ -1,3 +1,5 @@
+import React from 'react';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Text, View, ScrollView } from "react-native";
 import AuthHeader from "../../../components/AuthHeader";
 import Input from "../../../components/Input";
@@ -8,14 +10,20 @@ import Button from "../../../components/Button";
 import Separator from "../../../components/Separator";
 import GoogleLogin from "../../../components/GoogleLogin";
 
-const Signup = () => {
+const Signup = ({navigation}) => {
 
     const [checked, setChecked] = useState(false)
 
+    const onBack = () => {
+        navigation.goBack();
+    }
+    
+
     return (
+        <SafeAreaView>
         <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={styles.container}>
-            <AuthHeader title={"Sign up"}/>
+            <AuthHeader onBackPress={onBack} title={"Sign up"}/>
             <Input label={"Name"} placeholder={"John Doe"}></Input>
             <Input label={"Email"} placeholder={"example@gmail.com"}></Input>
             <Input isPassword label={"Password"} placeholder={"*******"}></Input>
@@ -33,6 +41,7 @@ const Signup = () => {
 
         </View>
         </ScrollView>
+        </SafeAreaView>
     )
 }
-export default Signup;
+export default React.memo (Signup)
