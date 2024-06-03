@@ -1,3 +1,4 @@
+import React from "react";
 import { Text, View, ScrollView } from "react-native";
 import AuthHeader from "../../../components/AuthHeader";
 import Input from "../../../components/Input";
@@ -7,15 +8,19 @@ import { useState } from "react";
 import Button from "../../../components/Button";
 import Separator from "../../../components/Separator";
 import GoogleLogin from "../../../components/GoogleLogin";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
 
     const [checked, setChecked] = useState(false)
-
+    const onBack = () => {
+        navigation.goBack();
+    }
     return (
+        <SafeAreaView>
         <ScrollView contentContainerStyle={styles.scrollViewContainer}>
         <View style={styles.container}>
-            <AuthHeader title={"Sign In"}/>
+            <AuthHeader onBackPress={onBack} title={"Sign In"}/>
             <Input label={"Email"} placeholder={"example@gmail.com"}></Input>
             <Input isPassword label={"Password"} placeholder={"*******"}></Input>
 
@@ -32,6 +37,7 @@ const SignIn = () => {
 
         </View>
         </ScrollView>
+        </SafeAreaView>
     )
 }
-export default SignIn;
+export default React.memo(SignIn)
