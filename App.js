@@ -15,6 +15,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from './src/screens/app/Home';
 import Favorites from './src/screens/app/Favorites';
 import Profile from './src/screens/app/Profile';
+import ProductDetails from './src/screens/app/ProductDetails';
+
+
 
 const WEB_CLIENT_ID =
   '206955833315-nb85c0q1ii1rr6rmr9nqmr7v43n3erg2.apps.googleusercontent.com';
@@ -88,6 +91,7 @@ const App = () => {
                 component={Tabs}
                 options={{headerShown: false}}
               />
+              <Stack.Screen name='ProductDetails' component={ProductDetails} options={{headerShown:false}} />
             </>
           ) : (
             <>
