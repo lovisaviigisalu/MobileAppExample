@@ -16,7 +16,7 @@ import Home from './src/screens/app/Home';
 import Favorites from './src/screens/app/Favorites';
 import Profile from './src/screens/app/Profile';
 import ProductDetails from './src/screens/app/ProductDetails';
-
+import Settings from './src/screens/app/Settings';
 
 
 const WEB_CLIENT_ID =
@@ -28,7 +28,15 @@ const REVERSED_CLIENT_ID =
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const ProfileStack = () =>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name='Profile' component={Profile} options={{headerShown: false}}></Stack.Screen>
+      <Stack.Screen name='Settings' component={Settings} options={{headerShown: false}}></Stack.Screen>
 
+    </Stack.Navigator>
+  )
+}
 const Tabs = () => {
   return (
     <Tab.Navigator 
@@ -61,7 +69,8 @@ const Tabs = () => {
 
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Favorites" component={Favorites} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Profile" component={ProfileStack} />
+  
     </Tab.Navigator>
   );
 };

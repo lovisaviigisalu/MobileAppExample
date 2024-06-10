@@ -3,7 +3,7 @@ import { Pressable, Image, Text, View } from "react-native";
 import { styles } from "./styles";
 import Input from "../Input";
 
-const Header = ({title, onBackPress, showBack, showSearch, showLogout, onSearchKeyword, keyword}) => {
+const Header = ({title, onBackPress, showBack, showSearch, showLogout, onSearchKeyword, keyword, onLogout}) => {
     const [showSeachInput, setShowSeachInput] = useState(false)
     const onSearch = () => {
         setShowSeachInput(search => !search)
@@ -22,7 +22,7 @@ const Header = ({title, onBackPress, showBack, showSearch, showLogout, onSearchK
             ) : <View style={styles.space} /> }
             <Text style={styles.title}>{title}</Text>
             { showLogout ? (
-                <Pressable hitSlop={20} onPress={onBackPress}>
+                <Pressable hitSlop={20} onPress={onLogout}>
                     <Image style={styles.icon} source={require('../../assets/logout.png')} />
                 </Pressable>
             ) : <View style={styles.space} />}
